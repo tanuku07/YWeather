@@ -15,7 +15,8 @@ public class RestClient {
         setupRestClient();
     }
 
-    private RestClient() {}
+    private RestClient() {
+    }
 
     public static Api get() {
         return REST_CLIENT;
