@@ -2,6 +2,7 @@ package com.spalmalo.yweather.backend;
 
 import com.squareup.okhttp.OkHttpClient;
 
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 
@@ -23,9 +24,16 @@ public class RestClient {
     }
 
     private static void setupRestClient() {
+        RequestInterceptor requestInterceptor = new RequestInterceptor() {
+            @Override
+            public void intercept(RequestFacade request) {
+                request.addPathParam("APPID", "089bf92069d4a25e7835d003635d0e1f");
+            }
+        };
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setEndpoint(ROOT)
                 .setClient(new OkClient(new OkHttpClient()))
+                .setRequestInterceptor(requestInterceptor)
                 .setLogLevel(RestAdapter.LogLevel.FULL);
 
         RestAdapter restAdapter = builder.build();
