@@ -2,17 +2,38 @@ package com.spalmalo.yweather.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.spalmalo.yweather.R;
+import com.spalmalo.yweather.backend.RestClient;
+import com.spalmalo.yweather.pojos.WeatherResponse;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class MainActivity extends Activity {
-
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv = (TextView) findViewById(R.id.textView);
+
+        RestClient.get().getWeather("Bishkek", new Callback<WeatherResponse>() {
+            @Override
+            public void success(WeatherResponse weatherResponse, Response response) {
+               tv.setText(weatherResponse.base);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                // something went wrong
+            }
+        });
     }
 
 
