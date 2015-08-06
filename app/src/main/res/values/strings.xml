@@ -2,4 +2,6 @@
     <string name="app_name">YWeather</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="weather_description">Scattered Clouds</string>
+    <string name="main_temp">35 \u2103</string>
 </resources>
