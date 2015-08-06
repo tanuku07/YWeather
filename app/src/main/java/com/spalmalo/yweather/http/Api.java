@@ -1,4 +1,4 @@
-package com.spalmalo.yweather.backend;
+package com.spalmalo.yweather.http;
 
 import com.spalmalo.yweather.pojos.WeatherResponse;
 

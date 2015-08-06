@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.spalmalo.yweather.R;
-import com.spalmalo.yweather.backend.RestClient;
+import com.spalmalo.yweather.http.RestClient;
 import com.spalmalo.yweather.pojos.WeatherResponse;
 
 import retrofit.Callback;
