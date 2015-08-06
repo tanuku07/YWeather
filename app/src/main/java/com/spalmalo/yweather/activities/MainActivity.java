@@ -2,6 +2,7 @@ package com.spalmalo.yweather.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -23,15 +24,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         tv = (TextView) findViewById(R.id.textView);
 
-        RestClient.get().getWeather("Bishkek", new Callback<WeatherResponse>() {
+        RestClient.get().getWeatherByCityName("Bishkek", new Callback<WeatherResponse>() {
             @Override
             public void success(WeatherResponse weatherResponse, Response response) {
-                tv.setText(weatherResponse.base);
+                tv.setText(weatherResponse.toString());
             }
 
             @Override
             public void failure(RetrofitError error) {
-                // something went wrong
+                Log.e("TAG", error.getResponse().getReason());
             }
         });
     }
