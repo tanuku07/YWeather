@@ -2,6 +2,8 @@ package com.spalmalo.yweather.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,15 +19,18 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
     private TextView weatherDescriptionTextView, degreeTextView;
     private ImageView iconImageView;
+    private Toolbar toolbar;
     private static final String cityName = "Bishkek";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         weatherDescriptionTextView = (TextView) findViewById(R.id.weatherDescriptionTextView);
         degreeTextView = (TextView) findViewById(R.id.degreeTextView);
         iconImageView = (ImageView) findViewById(R.id.weatherIconImageView);
